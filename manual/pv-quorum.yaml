@@ -1,0 +1,74 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: quorum-bootnode-persistence 
+  labels:
+    type: local
+spec:
+  storageClassName: bootnode
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/qdata/qdata_0"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: quorum-node1-persistence 
+  labels:
+    type: local
+spec:
+  storageClassName: node1
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/qdata/qdata_1"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: quorum-node2-persistence 
+  labels:
+    type: local
+spec:
+  storageClassName: node2
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/qdata/qdata_2"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: quorum-node3-persistence 
+  labels:
+    type: local
+spec:
+  storageClassName: node3
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/qdata/qdata_3"
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: quorum-node4-persistence 
+  labels:
+    type: local
+spec:
+  storageClassName: node4
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/qdata/qdata_4"

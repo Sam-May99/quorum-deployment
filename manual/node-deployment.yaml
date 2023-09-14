@@ -1,0 +1,183 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quorum-node1
+  labels:
+    app: quorum
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quorum
+  template:
+    metadata:
+        labels:
+          app: quorum
+    spec:
+      volumes:
+      - name: quorum-storage
+        persistentVolumeClaim:
+          claimName: quorum-node1-pv-claim
+      containers:
+        - name: quorum
+          volumeMounts:
+          - mountPath: "/qdata"
+            name: quorum-storage
+          command:
+            - /bin/sh
+            - -c
+            - start.sh --bootnode="enode://973504942e8260307a1442046241e5dfc6a55a3065e3ce25d1a00b40315e127b62ba435237c7133b1d11940f1a8aadfea6c54766f337718b5d78ac26c20f4283@172.13.0.100:30301" --ibft --blockperiod=5 --roundchangetimer=15000 --networkid 2018
+          image: ssmay0/quorum:latest
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            limits:
+              cpu: 100m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quorum-node2
+  labels:
+    app: quorum
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quorum
+  template:
+    metadata:
+        labels:
+          app: quorum
+    spec:
+      volumes:
+      - name: quorum-storage
+        persistentVolumeClaim:
+          claimName: quorum-node2-pv-claim
+      containers:
+        - name: quorum
+          volumeMounts:
+          - mountPath: "/qdata"
+            name: quorum-storage
+          command:
+            - /bin/sh
+            - -c
+            - start.sh --bootnode="enode://973504942e8260307a1442046241e5dfc6a55a3065e3ce25d1a00b40315e127b62ba435237c7133b1d11940f1a8aadfea6c54766f337718b5d78ac26c20f4283@172.13.0.100:30301" --ibft --blockperiod=5 --roundchangetimer=15000 --networkid 2018
+          image: ssmay0/quorum:latest
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            limits:
+              cpu: 100m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quorum-node3
+  labels:
+    app: quorum
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quorum
+  template:
+    metadata:
+        labels:
+          app: quorum
+    spec:
+      volumes:
+      - name: quorum-storage
+        persistentVolumeClaim:
+          claimName: quorum-node3-pv-claim
+      containers:
+        - name: quorum
+          volumeMounts:
+          - mountPath: "/qdata"
+            name: quorum-storage
+          command:
+            - /bin/sh
+            - -c
+            - start.sh --bootnode="enode://973504942e8260307a1442046241e5dfc6a55a3065e3ce25d1a00b40315e127b62ba435237c7133b1d11940f1a8aadfea6c54766f337718b5d78ac26c20f4283@172.13.0.100:30301" --ibft --blockperiod=5 --roundchangetimer=15000 --networkid 2018
+          image: ssmay0/quorum:latest
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            limits:
+              cpu: 100m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quorum-node4
+  labels:
+    app: quorum
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quorum
+  template:
+    metadata:
+        labels:
+          app: quorum
+    spec:
+      volumes:
+      - name: quorum-storage
+        persistentVolumeClaim:
+          claimName: quorum-node4-pv-claim
+      containers:
+        - name: quorum
+          volumeMounts:
+          - mountPath: "/qdata"
+            name: quorum-storage
+          command:
+            - /bin/sh
+            - -c
+            - start.sh --bootnode="enode://973504942e8260307a1442046241e5dfc6a55a3065e3ce25d1a00b40315e127b62ba435237c7133b1d11940f1a8aadfea6c54766f337718b5d78ac26c20f4283@172.13.0.100:30301" --ibft --blockperiod=5 --roundchangetimer=15000 --networkid 2018
+          image: ssmay0/quorum:latest
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            limits:
+              cpu: 100m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi

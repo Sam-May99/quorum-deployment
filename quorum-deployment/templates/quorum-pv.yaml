@@ -1,0 +1,17 @@
+{{- range $k, $v := .Values.quorumClusterNodes }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: "quorum-{{ $v.name }}-persistence" 
+  labels:
+    type: local
+spec:
+  storageClassName: "{{ $v.name }}"
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/qdata/{{ $v.location }}"
+---
+{{- end }}

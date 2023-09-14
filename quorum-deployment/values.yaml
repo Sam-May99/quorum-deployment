@@ -80,3 +80,14 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+quorumClusterNodes:
+  - name: qnode1
+    location: qdata_1
+  - name: qnode2
+    location: qdata_2
+  - name: qnode3
+    location: qdata_3
+  - name: qnode4
+    location: qdata_4
+  

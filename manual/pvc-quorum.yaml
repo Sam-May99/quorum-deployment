@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: quorum-bootnode-pv-claim
+spec:
+  storageClassName: bootnode
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 512Mi 
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: quorum-node1-pv-claim
+spec:
+  storageClassName: node1
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 512Mi 
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: quorum-node2-pv-claim
+spec:
+  storageClassName: node2
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 512Mi 
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: quorum-node3-pv-claim
+spec:
+  storageClassName: node3
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 512Mi 
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: quorum-node4-pv-claim
+spec:
+  storageClassName: node4
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 512Mi

@@ -1,0 +1,48 @@
+{{- range $k, $v := .Values.quorumClusterNodes }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "quorum-{{ $v.name }}"
+  labels:
+    app: quorum
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quorum
+  template:
+    metadata:
+      labels:
+        app: quorum
+    spec:
+      volumes:
+        - name: quorum-storage
+          persistentVolumeClaim:
+            claimName: "quorum-{{ $v.name }}-pv-claim"
+      containers:
+        - name: quorum-runtime
+          volumeMounts:
+            - mountPath: "/qdata"
+              name: quorum-storage
+          command:
+            - /bin/sh
+            - -c
+            - start.sh --bootnode="enode://973504942e8260307a1442046241e5dfc6a55a3065e3ce25d1a00b40315e127b62ba435237c7133b1d11940f1a8aadfea6c54766f337718b5d78ac26c20f4283@bootnode-service.default.svc.cluster.local:30301" --ibft --blockperiod=5 --roundchangetimer=15000 --networkid 2018
+          image: "ssmay0/quorum:latest"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8545
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8545
+          resources:
+            limits:
+              cpu: 1
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+---
+{{- end }}  

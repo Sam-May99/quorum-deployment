@@ -1,0 +1,14 @@
+{{- range $k, $v := .Values.quorumClusterNodes }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: "quorum-{{ $v.name }}-pv-claim"
+spec:
+  storageClassName: "{{ $v.name }}"
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 512Mi
+---
+{{- end }}
