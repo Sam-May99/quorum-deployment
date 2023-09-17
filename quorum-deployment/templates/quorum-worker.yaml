@@ -4,16 +4,16 @@ kind: Deployment
 metadata:
   name: "quorum-{{ $v.name }}"
   labels:
-    app: quorum
+    app: "quorum-{{ $v.name }}"
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: quorum
+      app: "quorum-{{ $v.name }}"
   template:
     metadata:
       labels:
-        app: quorum
+        app: "quorum-{{ $v.name }}"
     spec:
       volumes:
         - name: quorum-storage

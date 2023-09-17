@@ -28,18 +28,10 @@ spec:
             - -c
             - bootnode -nodekey /qdata/nodekey
           image: ssmay0/quorum:latest
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 8545
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 8545
           resources:
             limits:
               cpu: 1
-              memory: 2Gi
+              memory: 4Gi
             requests:
-              cpu: 100m
-              memory: 128Mi
+              cpu: 200m
+              memory: 512Mi
